@@ -1,0 +1,26 @@
+# git-commit-ai
+# vscode-git-commit-ai
+# ai-commit-message-generator
+# automated-git-commits
+# vscode-ai-extension
+# gpt-commit-messages
+# ollama-git-commits
+# conventional-commits-ai
+# git-commit-automation
+# ai-powered-git
+
+git commit message generator
+vscode commit message ai
+automated commit messages
+ai git commits
+gpt-4 commit messages
+claude commit generator
+ollama commit messages
+conventional commits automation
+semantic commit messages
+git workflow automation
+developer productivity tools
+vscode git extension
+ai coding assistant
+commit message best practices
+git history automation

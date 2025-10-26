@@ -1,0 +1,138 @@
+{
+  "name": "git-commit-ai",
+  "displayName": "Git Commit AI",
+  "description": "✨ Generate perfect commit messages using AI by analyzing your staged changes",
+  "version": "0.1.0",
+  "publisher": "your-publisher-name",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/git-commit-ai"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Machine Learning",
+    "Other"
+  ],
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "openai",
+    "anthropic",
+    "conventional commits",
+    "gpt-4",
+    "claude"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "git-commit-ai.generateCommit",
+        "title": "✨ Generate Commit Message",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "git-commit-ai.configure",
+        "title": "⚙️ Configure Git Commit AI"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "git-commit-ai.generateCommit",
+          "group": "navigation",
+          "when": "scmProvider == git"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Git Commit AI",
+      "properties": {
+        "gitCommitAI.provider": {
+          "type": "string",
+          "default": "ollama",
+          "enum": [
+            "openai",
+            "anthropic",
+            "ollama"
+          ],
+          "enumDescriptions": [
+            "OpenAI (GPT-4, GPT-3.5)",
+            "Anthropic (Claude)",
+            "Ollama (Local AI)"
+          ],
+          "description": "AI provider to use for generating commit messages"
+        },
+        "gitCommitAI.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for the selected AI provider (stored securely)"
+        },
+        "gitCommitAI.model": {
+          "type": "string",
+          "default": "llama3.2",
+          "description": "AI model to use (e.g., llama3.2 for Ollama, gpt-4-turbo-preview for OpenAI)"
+        },
+        "gitCommitAI.commitStyle": {
+          "type": "string",
+          "default": "conventional",
+          "enum": [
+            "conventional",
+            "simple",
+            "detailed"
+          ],
+          "enumDescriptions": [
+            "Conventional Commits (feat/fix/chore format)",
+            "Simple and concise",
+            "Detailed with context"
+          ],
+          "description": "Commit message style"
+        },
+        "gitCommitAI.maxTokens": {
+          "type": "number",
+          "default": 150,
+          "description": "Maximum tokens for AI response"
+        },
+        "gitCommitAI.includeDescription": {
+          "type": "boolean",
+          "default": false,
+          "description": "Generate detailed commit description (multi-line)"
+        },
+        "gitCommitAI.ollamaUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama API URL (for local AI)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.22.0",
+    "eslint": "^8.40.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "openai": "^4.20.0",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "simple-git": "^3.20.0",
+    "axios": "^1.6.0"
+  }
+}
